@@ -368,4 +368,45 @@ export const dashboardApi = {
     },
 };
 
+// ============================================
+// BLOG MANAGEMENT API
+// ============================================
+
+export const blogManagementApi = {
+    getAll: async (params = {}) => {
+        const response = await adminApi.get('/api/blogs/admin/all', { params });
+        return response.data;
+    },
+
+    getById: async (id) => {
+        const response = await adminApi.get(`/api/blogs/admin/${id}`);
+        return response.data;
+    },
+
+    create: async (data) => {
+        const response = await adminApi.post('/api/blogs/admin', data);
+        return response.data;
+    },
+
+    update: async (id, data) => {
+        const response = await adminApi.put(`/api/blogs/admin/${id}`, data);
+        return response.data;
+    },
+
+    delete: async (id) => {
+        const response = await adminApi.delete(`/api/blogs/admin/${id}`);
+        return response.data;
+    },
+
+    publish: async (id) => {
+        const response = await adminApi.patch(`/api/blogs/admin/${id}/publish`);
+        return response.data;
+    },
+
+    unpublish: async (id) => {
+        const response = await adminApi.patch(`/api/blogs/admin/${id}/unpublish`);
+        return response.data;
+    },
+};
+
 export default adminApi;
