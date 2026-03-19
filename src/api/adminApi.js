@@ -409,4 +409,30 @@ export const blogManagementApi = {
     },
 };
 
+// ============================================
+// REWARDS MANAGEMENT API
+// ============================================
+
+export const rewardsManagementApi = {
+    adjustPoints: async (userId, points, reason) => {
+        const response = await adminApi.post('/api/rewards/admin/adjust-points', { userId, points, reason });
+        return response.data;
+    },
+
+    getRedemptions: async (params = {}) => {
+        const response = await adminApi.get('/api/rewards/admin/redemptions', { params });
+        return response.data;
+    },
+
+    updateRedemption: async (id, data) => {
+        const response = await adminApi.put(`/api/rewards/admin/redemptions/${id}`, data);
+        return response.data;
+    },
+
+    getUserWallet: async (userId) => {
+        const response = await adminApi.get(`/api/rewards/admin/user/${userId}/wallet`);
+        return response.data;
+    },
+};
+
 export default adminApi;

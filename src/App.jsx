@@ -30,6 +30,7 @@ import ReportedMessages from "./pages/ReportedMessages";
 import PropertyReports from "./pages/PropertyReports";
 import BlogManagement from "./pages/BlogManagement";
 import AdminBlogEditor from "./pages/AdminBlogEditor";
+import RewardsManagement from "./pages/RewardsManagement";
 
 const Layout = ({ isSidebarOpen, toggleSidebar, children }) => {
   const location = useLocation();
@@ -257,6 +258,15 @@ function AppContent() {
           element={
             <AdminProtectedRoute>
               <AdminBlogEditor />
+            </AdminProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/rewards-management"
+          element={
+            <AdminProtectedRoute>
+              <RewardsManagement />
             </AdminProtectedRoute>
           }
         />

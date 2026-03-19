@@ -73,6 +73,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       name: "Blog Management",
       icon: <FileText className="h-5 w-5" />,
     },
+    {
+      path: "/rewards-management",
+      name: "Rewards",
+      icon: <BarChart3 className="h-5 w-5" />,
+    },
   ];
 
   /**
