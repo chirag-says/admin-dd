@@ -414,6 +414,11 @@ export const blogManagementApi = {
 // ============================================
 
 export const rewardsManagementApi = {
+    getOverview: async (params = {}) => {
+        const response = await adminApi.get('/api/rewards/admin/overview', { params });
+        return response.data;
+    },
+
     adjustPoints: async (userId, points, reason) => {
         const response = await adminApi.post('/api/rewards/admin/adjust-points', { userId, points, reason });
         return response.data;
