@@ -78,6 +78,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       name: "Rewards",
       icon: <BarChart3 className="h-5 w-5" />,
     },
+    {
+      path: "/deal-verifications",
+      name: "Deal Verifications",
+      icon: <FileText className="h-5 w-5" />,
+    },
   ];
 
   /**

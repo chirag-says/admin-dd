@@ -439,5 +439,25 @@ export const rewardsManagementApi = {
         return response.data;
     },
 };
+// ============================================
+// DEAL VERIFICATIONS API
+// ============================================
+
+export const dealVerificationsApi = {
+    getAll: async (params = {}) => {
+        const response = await adminApi.get('/api/admin/verifications', { params });
+        return response.data;
+    },
+
+    approve: async (id, adminNotes = '') => {
+        const response = await adminApi.post(`/api/admin/verifications/${id}/approve`, { adminNotes });
+        return response.data;
+    },
+
+    reject: async (id, adminNotes) => {
+        const response = await adminApi.post(`/api/admin/verifications/${id}/reject`, { adminNotes });
+        return response.data;
+    },
+};
 
 export default adminApi;

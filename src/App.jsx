@@ -31,6 +31,7 @@ import PropertyReports from "./pages/PropertyReports";
 import BlogManagement from "./pages/BlogManagement";
 import AdminBlogEditor from "./pages/AdminBlogEditor";
 import RewardsManagement from "./pages/RewardsManagement";
+import DealVerifications from "./pages/DealVerifications";
 
 const Layout = ({ isSidebarOpen, toggleSidebar, children }) => {
   const location = useLocation();
@@ -267,6 +268,15 @@ function AppContent() {
           element={
             <AdminProtectedRoute>
               <RewardsManagement />
+            </AdminProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/deal-verifications"
+          element={
+            <AdminProtectedRoute>
+              <DealVerifications />
             </AdminProtectedRoute>
           }
         />
