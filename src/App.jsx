@@ -32,6 +32,8 @@ import BlogManagement from "./pages/BlogManagement";
 import AdminBlogEditor from "./pages/AdminBlogEditor";
 import RewardsManagement from "./pages/RewardsManagement";
 import DealVerifications from "./pages/DealVerifications";
+import PopularProperties from "./pages/PopularProperties";
+import SiteVisitManagement from "./pages/SiteVisitManagement";
 
 const Layout = ({ isSidebarOpen, toggleSidebar, children }) => {
   const location = useLocation();
@@ -277,6 +279,23 @@ function AppContent() {
           element={
             <AdminProtectedRoute>
               <DealVerifications />
+            </AdminProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/popular-properties"
+          element={
+            <AdminProtectedRoute>
+              <PopularProperties />
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path="/site-visits"
+          element={
+            <AdminProtectedRoute>
+              <SiteVisitManagement />
             </AdminProtectedRoute>
           }
         />
