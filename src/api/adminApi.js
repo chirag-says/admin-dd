@@ -407,6 +407,16 @@ export const blogManagementApi = {
         const response = await adminApi.patch(`/api/blogs/admin/${id}/unpublish`);
         return response.data;
     },
+
+    uploadCover: async (file) => {
+        const formData = new FormData();
+        formData.append('coverImage', file);
+        const response = await adminApi.post('/api/blogs/admin/upload-cover', formData, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+            timeout: 60000, // 60s for large images
+        });
+        return response.data;
+    },
 };
 
 // ============================================
