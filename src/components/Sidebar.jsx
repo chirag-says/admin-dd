@@ -12,6 +12,8 @@ import {
   Mail,
   Flag,
   FileText,
+  Building2,
+  ClipboardCheck,
 } from "lucide-react";
 import { CiLogout } from "react-icons/ci";
 import { useAdmin } from "../context/AdminContext";
@@ -37,11 +39,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       name: "All Owners",
       icon: <BarChart3 className="h-5 w-5" />,
     },
-    {
-      path: "/owners-projects",
-      name: "Owner's Project",
-      icon: <BarChart3 className="h-5 w-5" />,
-    },
+
     {
       path: "/all-properties",
       name: "All Properties",
@@ -82,6 +80,21 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       path: "/deal-verifications",
       name: "Deal Verifications",
       icon: <FileText className="h-5 w-5" />,
+    },
+    {
+      path: "/builder-management",
+      name: "Builders",
+      icon: <Building2 className="h-5 w-5" />,
+    },
+    {
+      path: "/group-buy",
+      name: "Group Buy",
+      icon: <Users className="h-5 w-5" />,
+    },
+    {
+      path: "/bookings",
+      name: "Bookings",
+      icon: <ClipboardCheck className="h-5 w-5" />,
     },
   ];
 

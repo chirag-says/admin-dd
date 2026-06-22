@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import Dashboard from "./pages/Dashboard";
+import BookingManagement from "./pages/BookingManagement";
 
 import AddCategory from "./pages/AddCategory";
 import AddSubCategory from "./pages/AddSubCategory";
@@ -24,7 +25,6 @@ import ChangePassword from "./pages/ChangePassword";
 import MfaVerify from "./pages/MfaVerify";
 import LeadMonitoring from "./pages/LeadMonitoring";
 import BuilderVerification from "./pages/BuilderVerification";
-import BuilderProjects from "./pages/BuilderProjects";
 import ContactInquiries from "./pages/ContactInquiries";
 import ReportedMessages from "./pages/ReportedMessages";
 import PropertyReports from "./pages/PropertyReports";
@@ -34,6 +34,15 @@ import RewardsManagement from "./pages/RewardsManagement";
 import DealVerifications from "./pages/DealVerifications";
 import PopularProperties from "./pages/PopularProperties";
 import SiteVisitManagement from "./pages/SiteVisitManagement";
+import GroupBuyManagement from "./pages/GroupBuyManagement";
+import BuilderManagement from "./pages/BuilderManagement";
+import BuilderDetail from "./pages/BuilderDetail";
+import BuilderProjectsList from "./pages/BuilderProjectsList";
+import AdminAddProperty from "./pages/AdminAddProperty";
+import CreateProject from "./pages/CreateProject";
+import ProjectDetail from "./pages/ProjectDetail";
+import CreateUnitType from "./pages/CreateUnitType";
+import CreateCampaign from "./pages/CreateCampaign";
 
 const Layout = ({ isSidebarOpen, toggleSidebar, children }) => {
   const location = useLocation();
@@ -184,14 +193,7 @@ function AppContent() {
             </AdminProtectedRoute>
           }
         />
-        <Route
-          path="/owners-projects"
-          element={
-            <AdminProtectedRoute>
-              <BuilderProjects />
-            </AdminProtectedRoute>
-          }
-        />
+
         <Route
           path="/all-clients"
           element={
@@ -296,6 +298,94 @@ function AppContent() {
           element={
             <AdminProtectedRoute>
               <SiteVisitManagement />
+            </AdminProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/group-buy"
+          element={
+            <AdminProtectedRoute>
+              <GroupBuyManagement />
+            </AdminProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/builder-management"
+          element={
+            <AdminProtectedRoute>
+              <BuilderManagement />
+            </AdminProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/builder/:builderId"
+          element={
+            <AdminProtectedRoute>
+              <BuilderDetail />
+            </AdminProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin-add-property"
+          element={
+            <AdminProtectedRoute>
+              <AdminAddProperty />
+            </AdminProtectedRoute>
+          }
+        />
+
+        {/* ── Builder Project Flow ───────────────────────────── */}
+        <Route
+          path="/create-project"
+          element={
+            <AdminProtectedRoute>
+              <CreateProject />
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path="/project/:id"
+          element={
+            <AdminProtectedRoute>
+              <ProjectDetail />
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path="/builder/:builderId/projects"
+          element={
+            <AdminProtectedRoute>
+              <BuilderProjectsList />
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path="/project/:projectId/add-unit-type"
+          element={
+            <AdminProtectedRoute>
+              <CreateUnitType />
+            </AdminProtectedRoute>
+          }
+        />
+        <Route
+          path="/project/:projectId/campaign/new"
+          element={
+            <AdminProtectedRoute>
+              <CreateCampaign />
+            </AdminProtectedRoute>
+          }
+        />
+
+
+        <Route
+          path="/bookings"
+          element={
+            <AdminProtectedRoute>
+              <BookingManagement />
             </AdminProtectedRoute>
           }
         />
