@@ -14,6 +14,11 @@ import "leaflet/dist/leaflet.css";
 import axios from "axios"; // for Nominatim geocoding (public endpoints)
 import adminApi, { builderApi, propertyManagementApi } from "../api/adminApi";
 
+// Dedicated instance for third-party geocoding — must NOT send credentials.
+// The global axios.defaults.withCredentials = true would make browsers reject
+// Nominatim responses (ACAO: *  + credentialed request = CORS error).
+const geo = axios.create({ withCredentials: false });
+
 
 // Fix for default marker icon in react-leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -932,7 +937,7 @@ export default function AdminAddProperty() {
     // Reverse geocode to get address from coordinates
     const reverseGeocode = async (lat, lng) => {
         try {
-            const response = await axios.get(
+            const response = await geo.get(
                 `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1&zoom=18`,
                 { headers: { 'Accept-Language': 'en' } }
             );
@@ -983,7 +988,7 @@ export default function AdminAddProperty() {
         if (!query || query.length < 3) return;
         setIsGeocoding(true);
         try {
-            const response = await axios.get("https://nominatim.openstreetmap.org/search", {
+            const response = await geo.get("https://nominatim.openstreetmap.org/search", {
                 params: { format: "json", q: query, addressdetails: 1, limit: 1 },
                 headers: { "Accept-Language": "en" }
             });

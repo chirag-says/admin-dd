@@ -7,6 +7,11 @@ import { MapPin, Crosshair, ExternalLink, X, Loader2 } from "lucide-react";
 import LocationAutocomplete from "./LocationAutocomplete";
 import indiaStates from "../data/india-states.json";
 
+// Dedicated instance for third-party geocoding — must NOT send credentials.
+// The global axios.defaults.withCredentials = true would cause browsers to
+// reject Nominatim responses (ACAO: *  + credentialed = CORS error).
+const geo = axios.create({ withCredentials: false });
+
 // Fix for default marker icon in react-leaflet under Vite
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -139,7 +144,7 @@ export default function LocationPicker({ value, onChange, errors = {} }) {
       setForwardBusy(true);
       try {
         const q = `${v.city}${v.state ? ", " + v.state : ""}, India`;
-        const res = await axios.get("https://nominatim.openstreetmap.org/search", {
+        const res = await geo.get("https://nominatim.openstreetmap.org/search", {
           params: { format: "json", q, addressdetails: 1, limit: 1 },
           headers: { "Accept-Language": "en" },
         });
@@ -198,7 +203,7 @@ export default function LocationPicker({ value, onChange, errors = {} }) {
   const reverseGeocode = async (lat, lng) => {
     setReverseBusy(true);
     try {
-      const res = await axios.get(
+      const res = await geo.get(
         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&addressdetails=1&zoom=18`,
         { headers: { "Accept-Language": "en" } }
       );

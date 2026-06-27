@@ -24,15 +24,24 @@ const nonNegativeInt = z.preprocess(
 );
 
 // ── Step schemas ──────────────────────────────────────────────────────────────
+// Coerce "" / null / undefined → undefined; otherwise Number(val)
+const optionalCount = z.preprocess(
+  (val) => (val === "" || val === null || val === undefined ? undefined : Number(val)),
+  z.number().int("Must be a whole number").min(0, "Cannot be negative").optional()
+);
+
 export const step1Schema = z.object({
   name: z
     .string()
     .min(1, "Unit type name is required")
     .max(100, "Name cannot exceed 100 characters"),
-  // Either bedrooms or bathrooms must have a value
+  // Declare these so Zod keeps them before superRefine runs (unknown keys are stripped)
+  bedrooms:  optionalCount,
+  bathrooms: optionalCount,
+  balconies: optionalCount,
 }).superRefine((data, ctx) => {
-  const hasBedrooms = data.bedrooms !== "" && data.bedrooms !== undefined && data.bedrooms !== null;
-  const hasBathrooms = data.bathrooms !== "" && data.bathrooms !== undefined && data.bathrooms !== null;
+  const hasBedrooms  = data.bedrooms  !== undefined && data.bedrooms  !== null;
+  const hasBathrooms = data.bathrooms !== undefined && data.bathrooms !== null;
   if (!hasBedrooms && !hasBathrooms) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
@@ -83,6 +92,23 @@ export const step8Schema = z.object({
   viewPremium: z.preprocess(
     (val) => (val === "" || val === undefined ? 0 : Number(val)),
     z.number().min(0, "View premium cannot be negative")
+  ),
+  // Payment terms — optional, with sane bounds
+  bookingAmount: z.preprocess(
+    (val) => (val === "" || val === null || val === undefined ? undefined : Number(val)),
+    z.number().min(0, "Booking amount cannot be negative").optional()
+  ),
+  gstPercentage: z.preprocess(
+    (val) => (val === "" || val === null || val === undefined ? undefined : Number(val)),
+    z.number().min(0).max(28, "GST cannot exceed 28%").optional()
+  ),
+  stampDutyPercentage: z.preprocess(
+    (val) => (val === "" || val === null || val === undefined ? undefined : Number(val)),
+    z.number().min(0).max(20, "Stamp duty cannot exceed 20%").optional()
+  ),
+  registrationCharges: z.preprocess(
+    (val) => (val === "" || val === null || val === undefined ? undefined : Number(val)),
+    z.number().min(0, "Registration charges cannot be negative").optional()
   ),
 });
 

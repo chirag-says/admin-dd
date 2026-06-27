@@ -81,17 +81,9 @@ export const step5Schema = z.object({
   amenities: z.array(z.any()).min(1, "Select at least one amenity"),
 });
 
-export const step8Schema = z.object({
-  bookingAmount: nonNegativeNumber,
-  salesPhone: z
-    .string()
-    .min(1, "Sales phone is required")
-    .regex(/^[+\d\s\-()]{7,20}$/, "Enter a valid phone number"),
-  salesEmail: z
-    .string()
-    .min(1, "Sales email is required")
-    .email("Enter a valid email address"),
-});
+// Step 8 is now 'Sales Contact' — no required fields; no schema needed.
+// Payment terms (bookingAmount, gstPercentage, stampDutyPercentage, registrationCharges)
+// have moved to UnitType.paymentTerms. See CreateUnitType step 8.
 
 /**
  * validateProjectStep — runs Zod validation for a given step and returns
@@ -108,7 +100,7 @@ export function validateProjectStep(stepId, form, files = {}) {
     2: step2Schema,
     4: step4Schema,
     5: step5Schema,
-    8: step8Schema,
+    // Step 8 has no schema — payment terms moved to UnitType
   };
 
   const schema = schemaMap[stepId];
