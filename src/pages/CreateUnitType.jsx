@@ -326,7 +326,7 @@ export default function CreateUnitType() {
         <div className="space-y-4">
           <h2 className="text-lg font-semibold">Configuration</h2>
           <div>
-            <label className={lbl}>Unit Type Name *</label>
+            <label className={lbl}>Unit Type Name</label>
             <input
               data-field="name"
               className={errors.name ? "w-full border border-red-400 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-300" : inp}
@@ -361,7 +361,7 @@ export default function CreateUnitType() {
       case 2: return (
         <div className="space-y-4">
           <h2 className="text-lg font-semibold">Area Details</h2>
-          {[["carpetSqft","Carpet Area (sqft) *"],["builtUpSqft","Built-Up Area (sqft)"],["superBuiltUpSqft","Super Built-Up Area (sqft)"]].map(([k,l]) => (
+          {[["carpetSqft","Carpet Area (sqft)"],["builtUpSqft","Built-Up Area (sqft)"],["superBuiltUpSqft","Super Built-Up Area (sqft)"]].map(([k,l]) => (
             <div key={k}>
               <label className={lbl}>{l}</label>
               <input
@@ -542,7 +542,7 @@ export default function CreateUnitType() {
           <h2 className="text-lg font-semibold">Floor Plans &amp; Photos</h2>
 
           {/* 2D / 3D Floor Plans */}
-          {[["twoDFloorPlan","2D Floor Plan *"],["threeDFloorPlan","3D Floor Plan"]].map(([field,label]) => (
+          {[["twoDFloorPlan","2D Floor Plan"],["threeDFloorPlan","3D Floor Plan"]].map(([field,label]) => (
             <div key={field} className={`border rounded-xl p-4 ${errors[field] ? "border-red-400 bg-red-50/30" : "border-gray-200 bg-gray-50/50"}`}>
               <label className={lbl}>{label}</label>
               <input
@@ -631,7 +631,7 @@ export default function CreateUnitType() {
         <div className="space-y-4">
           <h2 className="text-lg font-semibold">Pricing</h2>
           <div>
-            <label className={lbl}>Base Price (₹) *</label>
+            <label className={lbl}>Base Price (₹)</label>
             <input
               data-field="basePrice"
               className={errors.basePrice ? "w-full border border-red-400 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-300" : inp}
@@ -702,7 +702,7 @@ export default function CreateUnitType() {
         <div className="space-y-4">
           <h2 className="text-lg font-semibold">Inventory</h2>
           <div className="grid grid-cols-2 gap-4">
-            {[["totalUnits","Total Units *"],["availableUnits","Available Units *"],["bookedUnits","Booked Units"],["blockedUnits","Admin Blocked"]].map(([k,l]) => (
+            {[["totalUnits","Total Units"],["availableUnits","Available Units"],["bookedUnits","Booked Units"],["blockedUnits","Admin Blocked"]].map(([k,l]) => (
               <div key={k}>
                 <label className={lbl}>{l}</label>
                 <input

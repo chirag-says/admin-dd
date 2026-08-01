@@ -282,7 +282,7 @@ export default function LocationPicker({ value, onChange, errors = {} }) {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className={lbl}>State *</label>
+          <label className={lbl}>State</label>
           <div data-field="state">
             <LocationAutocomplete
               value={v.state || ""}
@@ -290,14 +290,13 @@ export default function LocationPicker({ value, onChange, errors = {} }) {
               onSelect={handleStateSelect}
               suggestions={stateSuggestions}
               placeholder="Search state..."
-              required
               icon={<MapPin size={16} />}
               error={errors.state}
             />
           </div>
         </div>
         <div>
-          <label className={lbl}>City *</label>
+          <label className={lbl}>City</label>
           <div data-field="city">
             <LocationAutocomplete
               value={v.city || ""}
@@ -307,7 +306,6 @@ export default function LocationPicker({ value, onChange, errors = {} }) {
               placeholder={
                 v.state ? "Search city..." : "Select a state first"
               }
-              required
               disabled={!v.state && citySuggestions.length === 0}
               icon={<MapPin size={16} />}
               error={errors.city || cityGeoError}
@@ -320,7 +318,7 @@ export default function LocationPicker({ value, onChange, errors = {} }) {
           )}
         </div>
         <div>
-          <label className={lbl}>Locality *</label>
+          <label className={lbl}>Locality</label>
           <input
             data-field="locality"
             className={errors.locality ? "w-full border border-red-400 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-300" : inp}
@@ -361,7 +359,7 @@ export default function LocationPicker({ value, onChange, errors = {} }) {
           />
         </div>
         <div>
-          <label className={lbl}>Pincode *</label>
+          <label className={lbl}>Pincode</label>
           <input
             data-field="pincode"
             className={errors.pincode ? "w-full border border-red-400 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-300" : inp}
@@ -377,7 +375,7 @@ export default function LocationPicker({ value, onChange, errors = {} }) {
       <div className="border-t border-gray-200 pt-4 mt-2">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className={lbl}>Latitude *</label>
+            <label className={lbl}>Latitude</label>
             <input
               data-field="coords"
               className={errors.coords ? "w-full border border-red-400 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-300" : inp}
@@ -389,7 +387,7 @@ export default function LocationPicker({ value, onChange, errors = {} }) {
             />
           </div>
           <div>
-            <label className={lbl}>Longitude *</label>
+            <label className={lbl}>Longitude</label>
             <input
               data-field="coords"
               className={errors.coords ? "w-full border border-red-400 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-300" : inp}

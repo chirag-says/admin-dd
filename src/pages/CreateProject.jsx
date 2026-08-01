@@ -259,7 +259,7 @@ export default function CreateProject() {
             </div>
           )}
           <div>
-            <label className={lbl}>Project Name *</label>
+            <label className={lbl}>Project Name</label>
             <input
               data-field="name"
               className={inp}
@@ -281,7 +281,7 @@ export default function CreateProject() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className={lbl}>Category *</label>
+              <label className={lbl}>Category</label>
               <select
                 data-field="category"
                 className={inp}
@@ -394,10 +394,10 @@ export default function CreateProject() {
           <h2 className="text-lg font-semibold text-gray-800">Project Overview</h2>
           <div className="grid grid-cols-2 gap-4">
             {[
-              ["launchDate","Launch Date *","date"],
-              ["possessionDate","Possession Date *","date"],
-              ["totalLandArea","Total Land Area *","text"],
-              ["totalTowers","Number of Towers *","number"],
+              ["launchDate","Launch Date","date"],
+              ["possessionDate","Possession Date","date"],
+              ["totalLandArea","Total Land Area","text"],
+              ["totalTowers","Number of Towers","number"],
               ["floorsPerTower","Floors per Tower","text"],
               ["totalUnits","Total Units","number"],
               ["openSpacePercentage","Open Space %","number"],
@@ -481,7 +481,7 @@ export default function CreateProject() {
       case 5: return (
         <div className="space-y-4">
           <h2 className="text-lg font-semibold text-gray-800">Amenities</h2>
-          <p className="text-xs text-gray-500">Select from presets or add custom amenities. At least one required *</p>
+          <p className="text-xs text-gray-500">Select from presets or add custom amenities.</p>
           {Object.entries(AMENITY_PRESETS).map(([cat, items]) => (
             <div key={cat}>
               <h3 className="font-medium text-gray-700 mb-2">{cat}</h3>
@@ -554,7 +554,7 @@ export default function CreateProject() {
         <div className="space-y-5">
           <h2 className="text-lg font-semibold text-gray-800">Media</h2>
           {[
-            ["exteriorImages","Exterior Images (multiple) *","image/*",true],
+            ["exteriorImages","Exterior Images (multiple)","image/*",true],
             ["droneImages","Drone/Aerial Images","image/*",true],
             ["masterPlan","Master Plan","image/*",true],
             ["locationMap","Location Map","image/*",true],
@@ -624,7 +624,7 @@ export default function CreateProject() {
         <div className="space-y-4">
           <h2 className="text-lg font-semibold text-gray-800">Documents & Legal</h2>
           {[
-            ["reraCertificateUrl","RERA Certificate *"],
+            ["reraCertificateUrl","RERA Certificate"],
             ["commencementCertificateUrl","Commencement Certificate"],
             ["occupancyCertificateUrl","Occupancy Certificate"],
             ["environmentalClearanceUrl","Environmental Clearance"],
@@ -690,7 +690,7 @@ export default function CreateProject() {
                 }
               }}
             />
-            <label htmlFor="titleClear" className="text-sm text-gray-700">Title Clear *</label>
+            <label htmlFor="titleClear" className="text-sm text-gray-700">Title Clear</label>
           </div>
           {errors.titleClear && <p className="text-xs text-red-500">{errors.titleClear}</p>}
           <div>
