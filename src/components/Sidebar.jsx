@@ -21,8 +21,18 @@ import { useAdmin } from "../context/AdminContext";
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const { admin, logout, roleName, roleLevel } = useAdmin();
 
-  // All menu items available to all authenticated admins
-  // Backend handles permission enforcement
+  // All menu items available to all authenticated admins.
+  //
+  // Not an oversight: the product has ONE admin role with full administrative
+  // powers, so there is no tier to gate on. The permission layer that used to
+  // sit behind these routes was retired in Phase 3F because every admin held
+  // every permission, so it separated nothing while remaining able to 403 the
+  // whole panel when a code could not resolve.
+  //
+  // The backend enforces ADMIN AUTHENTICATION on every one of these routes
+  // (protectAdmin: session, fingerprint, MFA, active account), plus a role-level
+  // check on the audit log. It does not enforce per-menu permissions, and this
+  // comment used to claim it did.
   const menuItems = [
     {
       path: "/dashboard",
@@ -43,6 +53,26 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     {
       path: "/all-properties",
       name: "All Properties",
+      icon: <BarChart3 className="h-5 w-5" />,
+    },
+
+    // Taxonomy management had no navigation path at all: /all-category and
+    // /add-category were routed and guarded but reachable only by typing the
+    // URL. That matters operationally rather than cosmetically, since
+    // /admin-add-property depends on these taxonomies and the property category
+    // and type filters are driven by them.
+    //
+    // /add-subcategory is gone: the subcategory level is retired (decision D9)
+    // and its API is unmounted.
+    {
+      path: "/all-category",
+      name: "Categories",
+      icon: <BarChart3 className="h-5 w-5" />,
+    },
+
+    {
+      path: "/add-category",
+      name: "Add Category",
       icon: <BarChart3 className="h-5 w-5" />,
     },
 
