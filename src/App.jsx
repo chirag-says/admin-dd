@@ -32,7 +32,6 @@ import AdminBlogEditor from "./pages/AdminBlogEditor";
 import RewardsManagement from "./pages/RewardsManagement";
 import DealVerifications from "./pages/DealVerifications";
 import PopularProperties from "./pages/PopularProperties";
-import SiteVisitManagement from "./pages/SiteVisitManagement";
 import GroupBuyManagement from "./pages/GroupBuyManagement";
 import BuilderManagement from "./pages/BuilderManagement";
 import BuilderDetail from "./pages/BuilderDetail";
@@ -284,14 +283,6 @@ function AppContent() {
           element={
             <AdminProtectedRoute>
               <PopularProperties />
-            </AdminProtectedRoute>
-          }
-        />
-        <Route
-          path="/site-visits"
-          element={
-            <AdminProtectedRoute>
-              <SiteVisitManagement />
             </AdminProtectedRoute>
           }
         />
